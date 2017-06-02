@@ -144,7 +144,7 @@ public:
             for (size_t j=DimCols;j--; ret[i][j]=(i==j));
         return ret;
     }
-
+    
     T det() const {
         return dt<DimCols,T>::det(*this);
     }
@@ -182,6 +182,7 @@ public:
         for (size_t i=DimCols; i--; ret[i]=this->col(i));
         return ret;
     }
+    
 };
 
 /////////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		690FE68A1ECC866400370517 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 690FE6891ECC866400370517 /* main.cpp */; };
+		6937BEC71EE16A7700D85F2F /* tgatarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6937BEC51EE16A7700D85F2F /* tgatarget.cpp */; };
+		6937BECD1EE1956600D85F2F /* ObjectRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6937BECB1EE1956600D85F2F /* ObjectRenderer.cpp */; };
 		69383C381ECC890400DDA7A7 /* geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69383C351ECC890400DDA7A7 /* geometry.cpp */; };
 		69383C391ECC890400DDA7A7 /* model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69383C361ECC890400DDA7A7 /* model.cpp */; };
 		69383C3A1ECC890400DDA7A7 /* tgaimage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69383C371ECC890400DDA7A7 /* tgaimage.cpp */; };
@@ -28,6 +30,13 @@
 /* Begin PBXFileReference section */
 		690FE6861ECC866400370517 /* TinyRenderer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TinyRenderer; sourceTree = BUILT_PRODUCTS_DIR; };
 		690FE6891ECC866400370517 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		6937BEC51EE16A7700D85F2F /* tgatarget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tgatarget.cpp; sourceTree = "<group>"; };
+		6937BEC61EE16A7700D85F2F /* tgatarget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tgatarget.hpp; sourceTree = "<group>"; };
+		6937BEC81EE16E5300D85F2F /* geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
+		6937BEC91EE16E5300D85F2F /* model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
+		6937BECA1EE16E5300D85F2F /* tgaimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tgaimage.h; sourceTree = "<group>"; };
+		6937BECB1EE1956600D85F2F /* ObjectRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectRenderer.cpp; sourceTree = "<group>"; };
+		6937BECC1EE1956600D85F2F /* ObjectRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectRenderer.hpp; sourceTree = "<group>"; };
 		69383C351ECC890400DDA7A7 /* geometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = geometry.cpp; sourceTree = "<group>"; };
 		69383C361ECC890400DDA7A7 /* model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = model.cpp; sourceTree = "<group>"; };
 		69383C371ECC890400DDA7A7 /* tgaimage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tgaimage.cpp; sourceTree = "<group>"; };
@@ -63,10 +72,17 @@
 		690FE6881ECC866400370517 /* TinyRenderer */ = {
 			isa = PBXGroup;
 			children = (
+				6937BEC81EE16E5300D85F2F /* geometry.h */,
+				6937BEC91EE16E5300D85F2F /* model.h */,
+				6937BECA1EE16E5300D85F2F /* tgaimage.h */,
 				69383C351ECC890400DDA7A7 /* geometry.cpp */,
 				69383C361ECC890400DDA7A7 /* model.cpp */,
 				69383C371ECC890400DDA7A7 /* tgaimage.cpp */,
 				690FE6891ECC866400370517 /* main.cpp */,
+				6937BEC51EE16A7700D85F2F /* tgatarget.cpp */,
+				6937BEC61EE16A7700D85F2F /* tgatarget.hpp */,
+				6937BECB1EE1956600D85F2F /* ObjectRenderer.cpp */,
+				6937BECC1EE1956600D85F2F /* ObjectRenderer.hpp */,
 			);
 			path = TinyRenderer;
 			sourceTree = "<group>";
@@ -130,6 +146,8 @@
 			files = (
 				69383C3A1ECC890400DDA7A7 /* tgaimage.cpp in Sources */,
 				690FE68A1ECC866400370517 /* main.cpp in Sources */,
+				6937BEC71EE16A7700D85F2F /* tgatarget.cpp in Sources */,
+				6937BECD1EE1956600D85F2F /* ObjectRenderer.cpp in Sources */,
 				69383C381ECC890400DDA7A7 /* geometry.cpp in Sources */,
 				69383C391ECC890400DDA7A7 /* model.cpp in Sources */,
 			);
