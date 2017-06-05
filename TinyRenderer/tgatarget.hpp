@@ -29,7 +29,7 @@ public:
     
     void drawTri(const std::vector<Vec2i> verts, const TGAColor& colour);
     
-    void draw3DTri(Vec3f v0, Vec3f v1, Vec3f v2);
+    void draw3DTri(Vec3f v0, Vec3f v1, Vec3f v2, const TGAColor& colour);
     
 private:
     
@@ -39,12 +39,13 @@ private:
     
     void drawSteepLToRLine(const Vec2i &start, const Vec2i end, const TGAColor &colour, int yDirection);
 
-    Vec2f project(const Vec3f &v);
+    Vec2i project(const Vec3f &v);
     
-    Vec2f bottomLeft(const Vec2i &v0, const Vec2i &v1, const Vec2i &v2);
+    Vec2i bottomLeft(const Vec2i &v0, const Vec2i &v1, const Vec2i &v2);
 
-    Vec2f topRight(const Vec2i &v0, const Vec2i &v1, const Vec2i &v2);
+    Vec2i topRight(const Vec2i &v0, const Vec2i &v1, const Vec2i &v2);
 
+    Vec3f barycentric(Vec2f p, Vec2f a, Vec2f b, Vec2f c);
     
 };
 

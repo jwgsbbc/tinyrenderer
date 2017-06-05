@@ -30,7 +30,6 @@ public:
     void setScale(const float scale);
     void renderWireFrame();
     void renderFilled();
-    void renderFilled3D();
     
 private:
     

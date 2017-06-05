@@ -42,17 +42,20 @@ std::vector<Vec2i> ObjectRenderer::get2DFaceTris(int i) {
 std::vector<Vec3f> ObjectRenderer::get3DFaceTris(int i) {
     std::vector<Vec3f> ret;
     auto face = model.face(i);
-    ret.push_back(position + ( model.vert(face[0]) * scale ) );
-    ret.push_back(position + ( model.vert(face[1]) * scale ) );
-    ret.push_back(position + ( model.vert(face[2]) * scale ) );
+    auto v0 = model.vert(face[0]);
+    auto v1 = model.vert(face[1]);
+    auto v2 = model.vert(face[2]);
+    ret.push_back(position + ( v0 * scale ) );
+    ret.push_back(position + ( v1 * scale ) );
+    ret.push_back(position + ( v2 * scale ) );
     return ret;
 }
 
 void ObjectRenderer::renderFilled() {
     for (int i=0; i<model.nfaces(); i++) {
-        auto tris = get3DFaceTris(i);
-        Vec3f ab = tris[0] - tris[1];
-        Vec3f ac = tris[0] - tris[2];
+        auto verts = get3DFaceTris(i);
+        Vec3f ab = verts[0] - verts[1];
+        Vec3f ac = verts[0] - verts[2];
         Vec3f cp = cross(ab, ac);
         if(cp.z<=0.0f) {
             cp.normalize();
@@ -60,15 +63,8 @@ void ObjectRenderer::renderFilled() {
             auto col = TGAColor(std::max(0.0f,cp.x),
                                 std::max(0.0f,cp.y),
                                 std::max(0.0f,cp.x));
-            target.drawTri(get2DFaceTris(i), col);
+            target.draw3DTri(verts[0], verts[1], verts[2], col);
         }
-    }
-}
-
-void ObjectRenderer::renderFilled3D() {
-    for (int i=0; i<model.nfaces(); i++) {
-        auto tris = get3DFaceTris(i);
-        target.draw3DTri(tris[0], tris[1], tris[2]);
     }
 }
 
