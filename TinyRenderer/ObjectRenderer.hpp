@@ -13,8 +13,6 @@
 #include "model.h"
 #include "tgatarget.hpp"
 
-typedef mat<3,3,float> M33;
-
 class ObjectRenderer {
     
 private:
@@ -32,6 +30,7 @@ public:
     void setScale(const float scale);
     void renderWireFrame();
     void renderFilled();
+    void renderFilled3D();
     
 private:
     

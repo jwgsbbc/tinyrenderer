@@ -9,7 +9,10 @@
 #include "tgatarget.hpp"
 
 TgaTarget::TgaTarget(TGAImage &tgaImage) : tgaImage(tgaImage) {
-    
+    int size = tgaImage.get_width()*tgaImage.get_height();
+    for (int i=0; i<size; i++) {
+        zBuffer.push_back(10000.0f);
+    }
 }
 
 void TgaTarget::drawLine(const Vec2i &start, const Vec2i &end, const TGAColor &colour) {
@@ -107,4 +110,22 @@ void TgaTarget::drawTri(const std::vector<Vec2i> verts, const TGAColor &colour) 
     }
 }
 
+void TgaTarget::draw3DTri(Vec3f v30, Vec3f v31, Vec3f v32) {
+    Vec2f v20 = project(v30);
+    Vec2f v21 = project(v31);
+    Vec2f v22 = project(v32);
+    Vec2f vBL = bottomLeft(v20, v21, v22);
+    Vec2f vTR = topRight(v20, v21, v22);
+    
+    
+    
+}
+
+Vec2f TgaTarget::project(const Vec3f &v) {
+    return Vec2f(v.x, v.y);
+}
+
+Vec2f TgaTarget::bottomLeft(const Vec2i &v0, const Vec2i &v1, const Vec2i &v2) {
+    float minX = std::min(v0.x, std::min(v1.));
+}
 

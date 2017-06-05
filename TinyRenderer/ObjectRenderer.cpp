@@ -54,12 +54,21 @@ void ObjectRenderer::renderFilled() {
         Vec3f ab = tris[0] - tris[1];
         Vec3f ac = tris[0] - tris[2];
         Vec3f cp = cross(ab, ac);
-        cp.normalize();
-        cp = cp * 250.0f;
-        auto col = TGAColor(std::max(0.0f,cp.x),
-                            std::max(0.0f,cp.y),
-                            std::max(0.0f,cp.x));
-        target.drawTri(get2DFaceTris(i), col);
+        if(cp.z<=0.0f) {
+            cp.normalize();
+            cp = cp * 250.0f;
+            auto col = TGAColor(std::max(0.0f,cp.x),
+                                std::max(0.0f,cp.y),
+                                std::max(0.0f,cp.x));
+            target.drawTri(get2DFaceTris(i), col);
+        }
+    }
+}
+
+void ObjectRenderer::renderFilled3D() {
+    for (int i=0; i<model.nfaces(); i++) {
+        auto tris = get3DFaceTris(i);
+        target.draw3DTri(tris[0], tris[1], tris[2]);
     }
 }
 
