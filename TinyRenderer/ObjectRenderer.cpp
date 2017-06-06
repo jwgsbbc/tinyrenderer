@@ -51,6 +51,27 @@ std::vector<Vec3f> ObjectRenderer::get3DFaceTris(int i) {
     return ret;
 }
 
+class ColourShader: public PixelShader {
+private:
+    int face;
+    Model model;
+    
+public:
+    ColourShader(int face, Model model) : face(face), model(model) {
+    }
+    
+    virtual const TGAColor color(Vec3f bary) {
+        Vec2f t0 = model.uv(face, 0);
+        Vec2f t1 = model.uv(face, 1);
+        Vec2f t2 = model.uv(face, 2);
+        float u = t0.x*bary.x + t1.x*bary.y + t2.x*bary.z;
+        float v = t0.y*bary.x + t1.y*bary.y + t2.y*bary.z;
+        TGAColor col = model.diffuse(Vec2f(u,v));
+        col[3] = 255;
+        return col;
+    }
+};
+
 void ObjectRenderer::renderFilled() {
     for (int i=0; i<model.nfaces(); i++) {
         auto verts = get3DFaceTris(i);
@@ -63,7 +84,8 @@ void ObjectRenderer::renderFilled() {
             auto col = TGAColor(std::max(0.0f,cp.x),
                                 std::max(0.0f,cp.y),
                                 std::max(0.0f,cp.x));
-            target.draw3DTri(verts[0], verts[1], verts[2], col);
+            ColourShader shader(i, model);
+            target.draw3DTri(verts[0], verts[1], verts[2], shader);
         }
     }
 }

@@ -110,7 +110,7 @@ void TgaTarget::drawTri(const std::vector<Vec2i> verts, const TGAColor &colour) 
     }
 }
 
-void TgaTarget::draw3DTri(Vec3f v30, Vec3f v31, Vec3f v32, const TGAColor &col) {
+void TgaTarget::draw3DTri(Vec3f v30, Vec3f v31, Vec3f v32, PixelShader &shader) {
     
     Vec2i v20 = project(v30);
     Vec2i v21 = project(v31);
@@ -132,6 +132,7 @@ void TgaTarget::draw3DTri(Vec3f v30, Vec3f v31, Vec3f v32, const TGAColor &col) 
                     float zTest = zBuffer[zIndex];
                     if(zTest>=z) {
                         zBuffer[zIndex] = z;
+                        TGAColor col = shader.color(bary);
                         tgaImage.set(x, y, col);
                     }
                 }
@@ -139,6 +140,8 @@ void TgaTarget::draw3DTri(Vec3f v30, Vec3f v31, Vec3f v32, const TGAColor &col) 
         }
     }
 }
+
+
 
 Vec2i TgaTarget::project(const Vec3f &v) {
     return Vec2i(v.x, v.y);

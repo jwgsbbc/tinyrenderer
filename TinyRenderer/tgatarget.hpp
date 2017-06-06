@@ -13,6 +13,11 @@
 #include "tgaimage.h"
 #include "geometry.h"
 
+class PixelShader {
+public:
+    virtual const TGAColor color(Vec3f bary) = 0;
+};
+
 class TgaTarget {
     
 private:
@@ -29,7 +34,8 @@ public:
     
     void drawTri(const std::vector<Vec2i> verts, const TGAColor& colour);
     
-    void draw3DTri(Vec3f v0, Vec3f v1, Vec3f v2, const TGAColor& colour);
+    void draw3DTri(Vec3f v0, Vec3f v1, Vec3f v2, PixelShader& shader);
+
     
 private:
     
