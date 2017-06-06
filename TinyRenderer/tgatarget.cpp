@@ -126,12 +126,14 @@ void TgaTarget::draw3DTri(Vec3f v30, Vec3f v31, Vec3f v32, const TGAColor &col) 
         for(int y=vBL.y; y<=vTR.y; y++) {
             Vec3f bary = barycentric(Vec2f(x,y), v20f, v21f, v22f);
             if(bary.x>=0.0 && bary.y>=0.0f && bary.z>=0.0f) {
-                float z = v30.z*bary.x + v31.z*bary.y + v32.z+bary.z;
-                int zIndex = y*tgaImage.get_width()+x;
-                float zTest = zBuffer[zIndex];
-                if(zTest>=z) {
-                    zBuffer[zIndex] = z;
-                    tgaImage.set(x, y, col);
+                if(x<tgaImage.get_width() && y<tgaImage.get_height()) {
+                    float z = v30.z*bary.x + v31.z*bary.y + v32.z*bary.z;
+                    int zIndex = y*tgaImage.get_width()+x;
+                    float zTest = zBuffer[zIndex];
+                    if(zTest>=z) {
+                        zBuffer[zIndex] = z;
+                        tgaImage.set(x, y, col);
+                    }
                 }
             }
         }
